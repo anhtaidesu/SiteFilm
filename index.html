@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Film</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            position: relative;
+            padding: 16px 0; /* Increase padding for larger nav bar */
+        }
+        nav .nav-item {
+            position: relative;
+        }
+        nav a {
+            color: #fff;
+            padding: 16px 24px; /* Increase padding for larger buttons */
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px; /* Add rounded corners */
+            margin: 0 5px; /* Add margin between buttons */
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px); /* Position submenu below nav bar */
+            left: 0;
+            background-color: #444;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 10px; /* Add rounded corners to submenu */
+        }
+        .submenu a {
+            display: block;
+            padding: 10px;
+        }
+        .submenu a:hover {
+            background-color: #555;
+        }
+        .nav-item:hover .submenu,
+        .nav-item:focus-within .submenu {
+            display: block;
+            opacity: 1;
+            max-height: 200px; /* Adjust based on the number of submenu items */
+        }
+        .submenu.scrollable {
+            max-height: 200px; /* Adjust based on the number of submenu items */
+            overflow-y: auto;
+        }
+        .container {
+            padding: 20px;
+        }
+        .film {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .film-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .film-item img {
+            width: 100%;
+            height: auto;
+        }
+        .film-item h3 {
+            margin: 0;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+        .film-item p {
+            padding: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .slider {
+            width: 50%;
+            margin: 20px auto;
+            position: relative;
+        }
+        .slider .slick-prev,
+        .slider .slick-next {
+            display: none !important;
+        }
+        .slider .slick-slide {
+            cursor: pointer;
+        }
+        .slider .left-zone,
+        .slider .right-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 2;
+        }
+        .slider .left-zone {
+            left: 0;
+        }
+        .slider .right-zone {
+            right: 0;
+        }
+        .slick-slide img {
+            width: 100%;
+            border-radius: 10px; /* Add rounded corners to slider images */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anime Film</h1>
+    </header>
+    <nav>
+        <div class="nav-item">
+            <a href="#">Trang chủ</a>
+        </div>
+        <div class="nav-item">
+            <a href="#">Phim mới</a>
+        </div>
+        <div class="nav-item">
+            <a href="#">Thể loại</a>
+            <div class="submenu">
+                <a href="#">Hành động</a>
+                <a href="#">Hài hước</a>
+                <a href="#">Lãng mạn</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Năm</a>
+            <div class="submenu scrollable">
+                <a href="#">2018</a>
+                <a href="#">2019</a>
+                <a href="#">2020</a>
+                <a href="#">2021</a>
+                <a href="#">2022</a>
+                <a href="#">2023</a>
+                <a href="#">2024</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#">Liên hệ</a>
+        </div>
+    </nav>
+    <div class="slider">
+        <div class="left-zone"></div>
+        <div class="right-zone"></div>
+        <div><img src="assets/img/slider/biblia.png" alt="Ad 1"></div>
+        <div><img src="assets/img/slider/sabaibaru.png" alt="Ad 2"></div>
+        <div><img src="assets/img/slider/tômdachigame.png" alt="Ad 3"></div>
+    </div>
+    <div class="container">
+        <div class="film">
+            <div class="film-item">
+                <img src="https://via.placeholder.com/300x400" alt="Film 1">
+                <h3>Film 1</h3>
+                <p>Mô tả ngắn về phim 1.</p>
+            </div>
+            <div class="film-item">
+                <img src="https://via.placeholder.com/300x400" alt="Film 2">
+                <h3>Film 2</h3>
+                <p>Mô tả ngắn về phim 2.</p>
+            </div>
+            <div class="film-item">
+                <img src="https://via.placeholder.com/300x400" alt="Film 3">
+                <h3>Film 3</h3>
+                <p>Mô tả ngắn về phim 3.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Anime Film. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                arrows: true
+            });
+
+            $('.left-zone').on('click', function() {
+                $('.slider').slick('slickPrev');
+            });
+
+            $('.right-zone').on('click', function() {
+                $('.slider').slick('slickNext');
+            });
+
+            document.querySelectorAll('.nav-item').forEach(item => {
+                const submenu = item.querySelector('.submenu');
+                item.addEventListener('mouseover', () => {
+                    if (submenu) {
+                        submenu.style.display = 'block';
+                        setTimeout(() => {
+                            submenu.style.opacity = '1';
+                            submenu.style.maxHeight = '200px';
+                        }, 10);
+                    }
+                });
+                item.addEventListener('mouseout', () => {
+                    if (submenu) {
+                        setTimeout(() => {
+                            submenu.style.opacity = '0';
+                            submenu.style.maxHeight = '0';
+                            setTimeout(() => {
+                                submenu.style.display = 'none';
+                            }, 300);
+                        }, 10);
+                    }
+                });
+                submenu.addEventListener('mouseover', () => {
+                    submenu.style.opacity = '1';
+                    submenu.style.maxHeight = '200px';
+                });
+                submenu.addEventListener('mouseout', () => {
+                    setTimeout(() => {
+                        submenu.style.opacity = '0';
+                        submenu.style.maxHeight = '0';
+                        setTimeout(() => {
+                            submenu.style.display = 'none';
+                        }, 300);
+                    }, 10);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
