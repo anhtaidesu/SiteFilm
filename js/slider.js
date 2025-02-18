@@ -8,48 +8,57 @@ $(document).ready(function(){
         arrows: true
     });
 
+    let timeout;
+    const bounceTimeout = 20; // bounce
+    const autoScrollTimeout = 2000; // Time out
+
+    function triggerBounceEffect() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            $('.slick-current img').addClass('bounce');
+            setTimeout(function() {
+                $('.slick-current img').removeClass('bounce');
+            }, 500); // Ani time
+        }, bounceTimeout);
+    }
+
+    function startAutoScroll() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            $('.slider').slick('slickNext');
+            startAutoScroll();
+        }, autoScrollTimeout);
+    }
+
+    triggerBounceEffect(); // Trigger Bounce
+    startAutoScroll(); // Trigger Auto
+
+    $('.slider').on('swipe', function(event, slick, direction){
+        clearTimeout(timeout);
+        triggerBounceEffect();
+        startAutoScroll();
+    });
+
     $('.left-zone').on('click', function() {
         $('.slider').slick('slickPrev');
+        clearTimeout(timeout);
+        triggerBounceEffect();
+        startAutoScroll();
     });
 
     $('.right-zone').on('click', function() {
         $('.slider').slick('slickNext');
+        clearTimeout(timeout);
+        triggerBounceEffect();
+        startAutoScroll();
     });
 
-    document.querySelectorAll('.nav-item').forEach(item => {
-        const submenu = item.querySelector('.submenu');
-        item.addEventListener('mouseover', () => {
-            if (submenu) {
-                submenu.style.display = 'block';
-                setTimeout(() => {
-                    submenu.style.opacity = '1';
-                    submenu.style.maxHeight = '200px';
-                }, 10);
-            }
-        });
-        item.addEventListener('mouseout', () => {
-            if (submenu) {
-                setTimeout(() => {
-                    submenu.style.opacity = '0';
-                    submenu.style.maxHeight = '0';
-                    setTimeout(() => {
-                        submenu.style.display = 'none';
-                    }, 300);
-                }, 10);
-            }
-        });
-        submenu.addEventListener('mouseover', () => {
-            submenu.style.opacity = '1';
-            submenu.style.maxHeight = '200px';
-        });
-        submenu.addEventListener('mouseout', () => {
-            setTimeout(() => {
-                submenu.style.opacity = '0';
-                submenu.style.maxHeight = '0';
-                setTimeout(() => {
-                    submenu.style.display = 'none';
-                }, 300);
-            }, 10);
-        });
+    $('.slider').on('mouseover', function() {
+        clearTimeout(timeout);
+    });
+
+    $('.slider').on('mouseout', function() {
+        triggerBounceEffect();
+        startAutoScroll();
     });
 });
